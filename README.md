@@ -1,35 +1,36 @@
-# olist-delivery-analysis
-# Notes
+# Olist Delivery Performance Analysis
 
-## Decisions
-- Analysis covers 2017-01 to 2018-08.
-  2016 is sparse (no orders in 2016-11), excluded. also 2018-09 excluded because there is just one order.
-- Revenue = item price
+SQL (SQLite) + Power BI analysis of the Brazilian E-Commerce Public Dataset by Olist ([Kaggle](LINK)). Focus: delivery performance and its link to customer satisfaction.
 
+!--Dashboard PNG will be shared.--!
 
-## Data quality notes
-- order_reviews has duplicate reviews per order (99,224 rows vs 98,673 unique order_id). Plan for Q4: aggregate to one row per order (e.g. AVG(review_score) GROUP BY order_id) before joining.
+## Key findings
 
-## Q1 Monthly revenue: observations
+1. **Strong growth in 2017, plateau in 2018.** Monthly orders rose from 787 (Jan 2017) to 7,421 (Nov 2017) and stayed between ~6,100 and ~7,200 in 2018. Growth is almost entirely volume-driven: average revenue per order stays between 125 and 153.
+2. **About 8.1% of delivered orders arrive after the estimated date,** with spikes in Nov 2017 (14.3%), Feb 2018 (16.0%) and Mar 2018 (21.4%). Order volume alone does not explain the spikes.
+3. **Late delivery is associated with much lower review scores:** 2.57 for late orders vs 4.30 for on-time orders. This is an association, not proof of causation.
 
-- Strong growth in 2017: orders rose from 787 (2017-01) to 7,421 (2017-11); revenue from 120k to 1.00M.
-  *Source: 01_monthly_revenue.sql*
+## Recommendation
+---...---
 
-- 2018 is a plateau: monthly orders stay between ~6,100 and ~7,200 and revenue between ~840k and ~1.0M. Revenue in 2018-08 (849k) is ~14.5% below the 2018-05 level (993k).
-  *Source: 01_monthly_revenue.sql, 01c_yearly_ranges.sql*
+## Business questions
 
-- Same-period comparison (Jan-Aug): orders 22,562 in 2017 vs 53,530 in 2018 (+137%); revenue 3.08M vs 7.34M (+138%).
-  *Source: 01b_year_comparison.sql*
+1. How do monthly orders and revenue develop?
+2. Which product categories generate the most revenue?
+3. What is the average delivery time and the late-delivery rate?
+4. How do late deliveries relate to review scores?
 
-- Average revenue per order stays in a narrow range (125-153) with no clear trend, so growth is almost entirely volume-driven, not basket-size-driven. (2017-01 has only 787 orders, so its average is less reliable.)
-  *Source: 01_monthly_revenue.sql, 01c_yearly_ranges.sql*
+## Method and assumptions
 
-- Peak month: 2017-11 (1,003,862.14; 7,421 orders), but 2018-04 and 2018-05 are within ~1%.
-  *Source: 01a_peak_months.sql*
+- Scope: orders purchased 2017-01 to 2018-08. 2016 is sparse (no orders in 2016-11) and data is cut off after 2018-08.
+- Revenue = item price, excluding freight; canceled and unavailable orders excluded.
+- Delivery metrics use delivered orders only. Late = delivered after the estimated delivery date; late rate = late orders / delivered orders. 8 delivered orders without a delivery date are excluded.
+- Review analysis uses orders with exactly one review. Orders with several reviews (~0.6%) are excluded; the effect of this exclusion was not tested.
+- SQLite date functions (`strftime`, `julianday`) differ from SQL Server and PostgreSQL.
 
-- Hypothesis (not provable with this data): the Nov 2017 spike is Black Friday / year-end season.
+## Repository
 
-- Open question: why did growth stop in 2018? Worth checking delivery performance (Q3/Q4).
-
-
-## Q2 ...
+- `sql/` queries, one file per question, with comments
+- `results/` exported query results (CSV)
+- `dashboard/` Power BI file and screenshot
+- Raw data is not included; download it from Kaggle.
