@@ -1,6 +1,6 @@
 # Olist Delivery Performance Analysis
 
-SQL (SQLite) + Power BI analysis of the Brazilian E-Commerce Public Dataset by Olist ([Kaggle](LINK)). Focus: delivery performance and its link to customer satisfaction.
+SQL (SQLite) + Power BI analysis of the Brazilian E-Commerce Public Dataset by Olist ([Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data)). Focus: delivery performance and its link to customer satisfaction.
 
 !--Dashboard PNG will be shared.--!
 
