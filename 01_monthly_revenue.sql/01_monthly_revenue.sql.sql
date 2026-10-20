@@ -1,4 +1,4 @@
--- Question: Monthly order count and revenue
+-- Q1: Monthly order count and revenue
 -- Scope: 2017-01 to 2018-08 (2016 is sparse, no orders in 2016-11;
 --        data is cut off after 2018-08, only one order in 2018-09)
 -- Definition: revenue = item price, excluding freight; canceled/unavailable orders excluded
