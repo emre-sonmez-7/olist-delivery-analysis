@@ -3,7 +3,7 @@
 
 ## Decisions
 - Analysis covers 2017-01 to 2018-08
-- 2016 is sparse (no orders in 2016-11), excluded. also 2018-09 excluded because there is just one order.
+  2016 is sparse (no orders in 2016-11), excluded. also 2018-09 excluded because there is just one order.
 - Revenue = item price
 
 
