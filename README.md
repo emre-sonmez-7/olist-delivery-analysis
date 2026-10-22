@@ -34,7 +34,6 @@ Late deliveries spike in peak months (up to 21.4% in 2018-03 vs 8.1% on average)
 
 ## Repository
 
-- `sql/` queries, one file per question, with comments
-- `results/` exported query results (CSV)
+-`SQL & CSV Files/` queries with comments (SQL), exported query results (CSV) 
 - `dashboard/` Power BI file and screenshot
 - Raw data is not included; download it from Kaggle.
