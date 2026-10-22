@@ -14,7 +14,8 @@ SQL (SQLite) + Power BI analysis of the Brazilian E-Commerce Public Dataset by O
 3. **Late delivery is associated with much lower review scores:** 2.57 for late orders vs 4.30 for on-time orders. This is an association, not proof of causation.
 
 ## Recommendation
----...---
+
+Late deliveries spike in peak months (up to 21.4% in 2018-03 vs 8.1% on average) and are associated with much lower review scores (2.57 vs 4.30). I would first break late orders down by customer state and seller to find where delays concentrate, then add capacity or earlier customer notifications for those regions before high-volume periods such as November.
 
 ## Business questions
 
